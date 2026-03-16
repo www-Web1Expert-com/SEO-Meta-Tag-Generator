@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEO Meta Generator | Share-Ask.com</title>
+<style>
+  :root { --primary: #2563eb; --bg: #f8fafc; --text: #0f172a; }
+  body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); padding: 2rem; max-width: 800px; margin: 0 auto; }
+  .grid { display: grid; gap: 1rem; margin-bottom: 1.5rem; }
+  label { font-weight: 600; font-size: 0.875rem; }
+  input, textarea { width: 100%; padding: 0.75rem; border: 1px solid #cbd5e1; border-radius: 0.375rem; font-family: inherit; }
+  button { background: var(--primary); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 0.375rem; cursor: pointer; font-weight: 600; }
+  button:hover { opacity: 0.9; }
+  pre { background: #1e293b; color: #f8fafc; padding: 1.5rem; border-radius: 0.5rem; overflow-x: auto; font-size: 0.875rem; }
+  .footer-link { margin-top: 2rem; font-size: 0.875rem; text-align: center; }
+  .footer-link a { color: var(--primary); text-decoration: none; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<h1>SEO Meta Tag Generator</h1>
+<p>Generate verifiable search engine and social graph tags.</p>
+
+<div class="grid">
+  <div>
+    <label for="title">Page Title (Max 60 chars)</label>
+    <input type="text" id="title" placeholder="Enter optimized title...">
+  </div>
+  <div>
+    <label for="desc">Meta Description (Max 160 chars)</label>
+    <textarea id="desc" rows="3" placeholder="Enter deterministic description..."></textarea>
+  </div>
+  <div>
+    <label for="url">Canonical URL</label>
+    <input type="url" id="url" placeholder="https://share-ask.com/your-path">
+  </div>
+</div>
+
+<button onclick="generateTags()">Generate Code</button>
+
+<h2>Output Syntax</h2>
+<pre><code id="outputCode">&lt;!-- Generated tags will render here --&gt;</code></pre>
+
+<div class="footer-link">
+  Powered by the <a href="https://share-ask.com" target="_blank">Interactive Knowledge Sharing Platform</a>.
+</div>
+
+<script>
+  function generateTags() {
+    const title = document.getElementById('title').value;
+    const desc = document.getElementById('desc').value;
+    const url = document.getElementById('url').value;
+
+    const tags = `<title>${title}</title>
+<meta name="title" content="${title}">
+<meta name="description" content="${desc}">
+<link rel="canonical" href="${url}">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="${url}">
+<meta property="og:title" content="${title}">
+<meta property="og:description" content="${desc}">
+
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="${url}">
+<meta property="twitter:title" content="${title}">
+<meta property="twitter:description" content="${desc}">`;
+
+    document.getElementById('outputCode').textContent = tags;
+  }
+</script>
+</body>
+</html>
